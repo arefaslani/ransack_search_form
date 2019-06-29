@@ -12,19 +12,19 @@
   <% end %>
 
   <% condition_fields = f.condition_fields do |c| %>
-    <%= render 'ransack_advanced_search/condition_fields', f: c %>
+    <%= render 'ransack_search_form/condition_fields', f: c %>
   <% end %>
   <%= condition_fields %>
   <% if condition_fields.empty? %>
     <%= f.send("condition_fields", f.object.send("build_condition"), child_index: "new_condition") do |builder| %>
-      <%= render 'ransack_advanced_search/condition_fields', f: builder %>
+      <%= render 'ransack_search_form/condition_fields', f: builder %>
     <% end %>
   <% end %>
 
   <%= button_to_add_fields '', f, :condition %>
 
   <%= f.grouping_fields do |g| %>
-    <%= render partial: 'ransack_advanced_search/grouping_fields',
+    <%= render partial: 'ransack_search_form/grouping_fields',
                locals: { f: g, remove_able: true } %>
   <% end %>
 

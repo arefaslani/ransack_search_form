@@ -1,4 +1,4 @@
-class CreateRansackAdvancedSearchSavedSearch < ActiveRecord::Migration
+class CreateRansackSearchFormSavedSearch < ActiveRecord::Migration
   def change
     create_table :saved_searches do |t|
       t.string :context, null: false

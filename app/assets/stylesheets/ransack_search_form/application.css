@@ -12,20 +12,20 @@
  *= require_tree .
  */
 
-.ransack-advanced-search i.remove_fields,
-.ransack-advanced-search i.add_fields {
+.ransack-search-form i.remove_fields,
+.ransack-search-form i.add_fields {
   cursor: pointer;
  }
 
- .ransack-advanced-search .ransack-condition-field {
+ .ransack-search-form .ransack-condition-field {
      margin-bottom: 5px;
      margin-top: 5px;
  }
 
-.ransack-advanced-search .ransack-action-buttons {
+.ransack-search-form .ransack-action-buttons {
   margin-top: 10px;
 }
 
-.ransack-advanced-search .ransack-saved-search-delete {
+.ransack-search-form .ransack-saved-search-delete {
     margin-top: 1px;
 }

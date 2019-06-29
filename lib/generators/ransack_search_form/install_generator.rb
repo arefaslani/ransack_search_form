@@ -1,15 +1,15 @@
 require 'rails/generators/base'
 
-module RansackAdvancedSearch
+module RansackSearchForm
   module Generators
     class InstallGenerator < Rails::Generators::Base
       source_root File.expand_path("../../templates", __FILE__)
       include Rails::Generators::Migration
-      desc "Install Ransack Advanced Search"
+      desc "Install Ransack Search Form"
       class_option :orm
 
       def copy_initializer
-        template "ransack_advanced_search.rb", "config/initializers/ransack_advanced_search.rb"
+        template "ransack_search_form.rb", "config/initializers/ransack_search_form.rb"
       end
     end
   end

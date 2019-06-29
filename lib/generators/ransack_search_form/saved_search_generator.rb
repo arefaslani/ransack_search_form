@@ -1,7 +1,7 @@
 require 'rails/generators/base'
 require 'rails/generators/migration'
 
-module RansackAdvancedSearch
+module RansackSearchForm
   module Generators
     class SavedSearchGenerator < Rails::Generators::Base
       source_root File.expand_path("../../templates", __FILE__)
@@ -20,7 +20,7 @@ module RansackAdvancedSearch
       end
 
       def copy_migrations
-        migration_template "create_ransack_advanced_search_saved_search.rb", "db/migrate/create_ransack_advanced_search_saved_search.rb"
+        migration_template "create_ransack_search_form_saved_search.rb", "db/migrate/create_ransack_search_form_saved_search.rb"
       end
 
     end

@@ -1,10 +1,8 @@
-[![Gem Version](https://badge.fury.io/rb/ransack_advanced_search.svg)](https://badge.fury.io/rb/ransack_advanced_search)
-
-# Ransack Advanced Search
+# Ransack Search Form
 
 [ransack](https://github.com/activerecord-hackery/ransack) is a Object-based searching for Rails.
 
-The `ransack_advanced_search` gem provides Bootstrap based templates for the [ransack](https://github.com/activerecord-hackery/ransack) Advanced query mode. This gem also provides some additional features to make search experience better and easy to use.
+The `ransack_search_form` gem provides Bootstrap based templates for the [ransack](https://github.com/activerecord-hackery/ransack) Advanced query mode. This gem also provides some additional features to make search experience better and easy to use.
 
 ## Features
 * Full [ransack](https://github.com/activerecord-hackery/ransack) compatibility (you can still use the default [ransack](https://github.com/activerecord-hackery/ransack) features);
@@ -15,12 +13,12 @@ The `ransack_advanced_search` gem provides Bootstrap based templates for the [ra
 
 ## Installation
 
-Remove any entry of `ransack` gem from your application's Gemfile. The `ransack_advanced_search` gem will include the `ransack` gem as a dependency.
+Remove any entry of `ransack` gem from your application's Gemfile. The `ransack_search_form` gem will include the `ransack` gem as a dependency.
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ransack_advanced_search'
+gem 'ransack_search_form'
 ```
 
 Execute:
@@ -29,11 +27,11 @@ Execute:
 
 Or install it yourself as:
 
-    $ gem install ransack_advanced_search
+    $ gem install ransack_search_form
 
-Run the generator to install the gem initializer, this will create the file `config/initializers/ransack_advanced_search.rb`:
+Run the generator to install the gem initializer, this will create the file `config/initializers/ransack_search_form.rb`:
 
-    $ rails generate ransack_advanced_search:install
+    $ rails generate ransack_search_form:install
 
 For while we don't need to change this file.
 
@@ -96,7 +94,7 @@ In your application layout `app/views/layouts/application.erb`, include a yield 
 <html>
   <head>
     <!-- Your app resources -->
-    <%= yield(:ransack_advanced_search_setup) %>
+    <%= yield(:ransack_search_form_setup) %>
   </head>
   <body>
   </body>
@@ -105,7 +103,7 @@ In your application layout `app/views/layouts/application.erb`, include a yield 
 In the view that you want the advanced search views you can choose betwenn quick_search and advanced_search views, so insert the following for advanced_search:
 
 ```ruby
-  <%= render partial: 'ransack_advanced_search/advanced_search',
+  <%= render partial: 'ransack_search_form/advanced_search',
     locals: {
        search_url: advanced_search_your_models_path, # POST route we created above
        redirect_path: your_models_path # GET redirect path, to return after some actions
@@ -116,7 +114,7 @@ In the view that you want the advanced search views you can choose betwenn quick
 Or, the following for quick_search:
 
 ```ruby
-  <%= render partial: 'ransack_advanced_search/quick_search',
+  <%= render partial: 'ransack_search_form/quick_search',
     locals: {
        search_url: advanced_search_your_models_path, # POST route we created above
        redirect_path: your_models_path # GET redirect path, to return after some actions
@@ -131,7 +129,7 @@ All done! Enjoy the search!
 
 If you want to provide the feature to Save ransack searches, follow these steps.
 
-Enable Saved Searches configuration in `config/initializers/ransack_advanced_search.rb`:
+Enable Saved Searches configuration in `config/initializers/ransack_search_form.rb`:
 
 ```ruby
 config.enable_saved_searches = true
@@ -139,7 +137,7 @@ config.enable_saved_searches = true
 
 Run this command to generate the Saved Search Migration:
 
-    $ rails generate ransack_advanced_search:saved_search
+    $ rails generate ransack_search_form:saved_search
 
 Execute:
 
@@ -149,7 +147,7 @@ In each controller action with the Advanced Search:
 
 * Include the Saved Search Utils methods:
 ```ruby
-include RansackAdvancedSearch::SavedSearchUtils
+include RansackSearchForm::SavedSearchUtils
 ```
 
 * Insert this line before creating the search:
@@ -180,7 +178,7 @@ This gem was built using i18n translation supports, and has bult-in support for 
 
 ## Contributing
 
-1. Fork it ( https://github.com/davidbrusius/ransack_advanced_search/fork )
+1. Fork it ( https://github.com/arefaslani/ransack_search_form/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

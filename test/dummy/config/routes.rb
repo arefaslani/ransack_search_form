@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
 
-  mount RansackAdvancedSearch::Engine => "/ransack_advanced_search"
+  mount RansackSearchForm::Engine => "/ransack_search_form"
 end

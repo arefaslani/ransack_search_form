@@ -1,8 +1,8 @@
-module RansackAdvancedSearchHelper
+module RansackSearchFormHelper
   def setup_search_form(builder, search_object)
     fields = builder.grouping_fields builder.object.new_grouping,
       object_name: 'new_object_name', child_index: "new_grouping" do |f|
-      render('ransack_advanced_search/grouping_fields', f: f)
+      render('ransack_search_form/grouping_fields', f: f)
     end
     content_for :ransack_setup, %Q{
       var search = new Search({grouping: "#{escape_javascript(fields)}"});
@@ -53,7 +53,7 @@ module RansackAdvancedSearchHelper
   def button_to_add_fields(name, f, type, custom_class='')
     new_object = f.object.send "build_#{type}"
     fields = f.send("#{type}_fields", new_object, child_index: "new_#{type}") do |builder|
-      render('ransack_advanced_search/' + type.to_s + "_fields", f: builder)
+      render('ransack_search_form/' + type.to_s + "_fields", f: builder)
     end
     content_tag :i, name, :class => custom_class + ' add_fields glyphicon glyphicon-plus-sign text-success', :type => 'button', 'data-field-type' => type, 'data-content' => "#{fields}"
   end

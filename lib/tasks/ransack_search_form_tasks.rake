@@ -1,4 +1,4 @@
 # desc "Explaining what the task does"
-# task :ransack_advanced_search do
+# task :ransack_search_form do
 #   # Task goes here
 # end

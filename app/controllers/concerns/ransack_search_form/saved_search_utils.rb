@@ -1,4 +1,4 @@
-module RansackAdvancedSearch
+module RansackSearchForm
   module SavedSearchUtils
     extend ActiveSupport::Concern
 

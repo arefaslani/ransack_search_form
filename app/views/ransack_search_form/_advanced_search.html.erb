@@ -1,19 +1,19 @@
-<div class="ransack-advanced-search">
+<div class="ransack-search-form">
 
   <div class="row">
-  <% if RansackAdvancedSearch.enable_saved_searches %>
+  <% if RansackSearchForm.enable_saved_searches %>
     <div class="col-md-4">
-      <%= render 'ransack_advanced_search/saved_searches_list', redirect_path: redirect_path %>
+      <%= render 'ransack_search_form/saved_searches_list', redirect_path: redirect_path %>
     </div>
     <div class="col-md-8">
   <% else %>
     <div class="col-md-12">
   <% end %>
-      <%= search_form_for(@search, url: search_url, html: { method: :post, class: 'form-inline', role: 'form'  }) do |f| %>
+      <%= search_form_for(@search, url: search_url, html: { method: :get, class: 'form-inline', role: 'form'  }) do |f| %>
 
         <% setup_search_form f, @search %>
 
-        <% if RansackAdvancedSearch.enable_saved_searches %>
+        <% if RansackSearchForm.enable_saved_searches %>
           <div class="form-group">
             <%= label_tag 'Descrição da Busca (necessária para salvar a busca)' %>
             <%= text_field_tag :description, @saved_search.try(:description), class: 'form-control input-sm' %>
@@ -27,7 +27,7 @@
         <h4><%= t('ransack.advanced_search.sort.title') %></h4>
         <div class="form-group">
           <%= f.sort_fields do |s| %>
-            <%= render 'ransack_advanced_search/sort_fields', f: s %>
+            <%= render 'ransack_search_form/sort_fields', f: s %>
           <% end %>
           <%= button_to_add_fields '', f, :sort %>
         </div>
@@ -35,7 +35,7 @@
         <h4><%= t('ransack.advanced_search.condition_group.title') %></h4>
         <div class="form-group">
           <%= f.grouping_fields do |g| %>
-            <%= render 'ransack_advanced_search/grouping_fields', f: g %>
+            <%= render 'ransack_search_form/grouping_fields', f: g %>
           <% end %>
           <%= button_to_add_fields '', f, :grouping %>
         </div>
@@ -45,7 +45,7 @@
         <div class="clearfix"></div>
         <div class="ransack-action-buttons">
           <%= f.submit t('ransack.advanced_search.form.submit_text'), class: 'btn btn-primary' %>
-          <% if RansackAdvancedSearch.enable_saved_searches %>
+          <% if RansackSearchForm.enable_saved_searches %>
             <%= f.submit t('ransack.advanced_search.form.save_submit_text'), name: 'save_search', class: 'btn btn-primary' %>
             <%= f.submit t('ransack.advanced_search.form.save_new_submit_text'), name: 'save_new_search', class: 'btn btn-primary' %>
           <% end %>
@@ -56,13 +56,11 @@
   </div>
 </div>
 
-<% content_for(:ransack_advanced_search_setup) do %>
-  <%= stylesheet_link_tag 'ransack_advanced_search/application', media: 'all' %>
-  <%= javascript_include_tag 'ransack_advanced_search/application' %>
+<%= stylesheet_link_tag 'ransack_search_form/application', media: 'all' %>
+<%= javascript_include_tag 'ransack_search_form/application' %>
 
-  <script>
-    $(document).ready(function () {
-      <%= yield(:ransack_setup) %>
-    });
-  </script>
-<% end %>
+<script>
+  $(document).ready(function () {
+    <%= yield(:ransack_setup) %>
+  });
+</script>
