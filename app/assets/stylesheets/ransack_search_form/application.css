@@ -29,3 +29,34 @@
 .ransack-search-form .ransack-saved-search-delete {
     margin-top: 1px;
 }
+
+.rsf-section {
+  background: #eee;
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 2px solid #aaa;
+}
+
+.rsf-condition-groups {
+  background: #ccc;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  border: 2px solid #aaa;
+}
+
+.rsf-condition-title {
+  background-color: #eee;
+  padding: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom: 2px solid #aaa;
+}
+
+.rsf-condition-rules {
+  padding: 15px;
+}
+
+.rsf-sort-field {
+  margin: 10px 0;
+}

@@ -24,20 +24,28 @@
           </div>
         <% end %>
 
-        <h4><%= t('ransack.advanced_search.sort.title') %></h4>
-        <div class="form-group">
-          <%= f.sort_fields do |s| %>
-            <%= render 'ransack_search_form/sort_fields', f: s %>
-          <% end %>
-          <%= button_to_add_fields 'Add sort', f, :sort, 'btn btn-primary' %>
+        <div class="rsf-section">
+          <div class="rsf-section-title">
+            <h4><%= t('ransack.advanced_search.sort.title') %></h4>
+          </div>
+          <div class="rsf-section-body">
+            <%= f.sort_fields do |s| %>
+              <%= render 'ransack_search_form/sort_fields', f: s %>
+            <% end %>
+            <%= button_to_add_fields 'Add sort', f, :sort, 'btn btn-primary' %>
+          </div>
         </div>
 
-        <h4><%= t('ransack.advanced_search.condition_group.title') %></h4>
-        <div class="form-group">
-          <%= f.grouping_fields do |g| %>
-            <%= render 'ransack_search_form/grouping_fields', f: g %>
-          <% end %>
-          <%= button_to_add_fields 'Add condition group', f, :grouping, 'btn btn-primary' %>
+        <div class="rsf-section">
+          <div class="rsf-section-title">
+            <h4><%= t('ransack.advanced_search.condition_group.title') %></h4>
+          </div>
+          <div class="rsf-section-body">
+            <%= f.grouping_fields do |g| %>
+              <%= render 'ransack_search_form/grouping_fields', f: g %>
+            <% end %>
+            <%= button_to_add_fields 'Add condition group', f, :grouping, 'btn btn-primary' %>
+          </div>
         </div>
 
         <!-- <%= label_tag :distinct, 'Return distinct records?' %> -->

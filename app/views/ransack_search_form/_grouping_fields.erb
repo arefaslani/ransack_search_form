@@ -1,31 +1,31 @@
-<%= content_tag :div, { class: 'fields', 'data-object-name' => f.object_name } do %>
+<%= content_tag :div, { class: 'rsf-condition-groups fields', 'data-object-name' => f.object_name } do %>
 
   <% remove_able = true if local_assigns[:remove_able].nil? %>
   <% if remove_able == false %>
-    <%= content_tag(:span, "#{t('ransack.advanced_search.condition_group.match')}
+    <%= content_tag(:div, "#{t('ransack.advanced_search.condition_group.match')}
       #{f.combinator_select({}, {class: 'form-control input-sm'})}
-      #{t('ransack.advanced_search.condition_group.match_condition')}", nil, false) %>
+      #{t('ransack.advanced_search.condition_group.match_condition')}", { class: "rsf-condition-title" }, false) %>
   <% else %>
-    <%= content_tag(:span, "#{t('ransack.advanced_search.condition_group.match')}
+    <%= content_tag(:div, "#{t('ransack.advanced_search.condition_group.match')}
       #{f.combinator_select({}, {class: 'form-control input-sm'})} #{t('ransack.advanced_search.condition_group.match_condition')}
-      #{button_to_remove_fields}", nil, false) %>
+      #{button_to_remove_fields}", { class: "rsf-condition-title" }, false) %>
   <% end %>
 
-  <% condition_fields = f.condition_fields do |c| %>
-    <%= render 'ransack_search_form/condition_fields', f: c %>
-  <% end %>
-  <%= condition_fields %>
-  <% if condition_fields.empty? %>
-    <%= f.send("condition_fields", f.object.send("build_condition"), child_index: "new_condition") do |builder| %>
-      <%= render 'ransack_search_form/condition_fields', f: builder %>
+  <div class="rsf-condition-rules">
+    <% condition_fields = f.condition_fields do |c| %>
+      <%= render 'ransack_search_form/condition_fields', f: c %>
     <% end %>
-  <% end %>
+    <%= condition_fields %>
+    <% if condition_fields.empty? %>
+      <%= f.send("condition_fields", f.object.send("build_condition"), child_index: "new_condition") do |builder| %>
+        <%= render 'ransack_search_form/condition_fields', f: builder %>
+      <% end %>
+    <% end %>
+    <%= button_to_add_fields 'Add condition', f, :condition, 'btn btn-success' %>
 
-  <%= button_to_add_fields 'Add condition', f, :condition, 'btn btn-success' %>
-
-  <%= f.grouping_fields do |g| %>
-    <%= render partial: 'ransack_search_form/grouping_fields',
-               locals: { f: g, remove_able: true } %>
-  <% end %>
-
+    <%= f.grouping_fields do |g| %>
+      <%= render partial: 'ransack_search_form/grouping_fields',
+                locals: { f: g, remove_able: true } %>
+    <% end %>
+  </div>
 <% end %>
