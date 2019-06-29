@@ -33,7 +33,7 @@
               <%= render partial: 'ransack_search_form/grouping_fields',
                          locals: { f: f, remove_able: true } %>
             <% end %>
-            <%= button_to_add_fields '', f, :grouping %>
+            <%= button_to_add_fields 'Add field', f, :grouping, 'btn btn-primary' %>
           <% end %>
         </div>
 

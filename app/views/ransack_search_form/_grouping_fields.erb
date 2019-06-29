@@ -21,7 +21,7 @@
     <% end %>
   <% end %>
 
-  <%= button_to_add_fields '', f, :condition %>
+  <%= button_to_add_fields 'Add condition', f, :condition, 'btn btn-success' %>
 
   <%= f.grouping_fields do |g| %>
     <%= render partial: 'ransack_search_form/grouping_fields',

@@ -11,7 +11,7 @@ module RansackSearchFormHelper
         fieldName = $(this).find('option:selected')[0].value;
         search.changeValueInputsType(this, fieldName, search);
       });
-      $(document).on("click", "i.add_fields", function() {
+      $(document).on("click", "button.add_fields", function() {
         search.add_fields(this, $(this).data('fieldType'), $(this).data('content'));
         if($(this).hasClass('ransack-add-attribute')) {
           fieldName = $(this).parents('.ransack-condition-field').find('select.ransack-attribute-select').find('option:selected')[0].value;
@@ -23,7 +23,7 @@ module RansackSearchFormHelper
         fieldName = $(this).find('option:selected')[0].value;
         search.changeValueInputsType(this, fieldName, search);
       });
-      $(document).on("click", "i.remove_fields", function() {
+      $(document).on("click", "button.remove_fields", function() {
         search.remove_fields(this);
         return false;
       });
@@ -46,16 +46,16 @@ module RansackSearchFormHelper
     fields_type
   end
 
-  def button_to_remove_fields
-    content_tag :i, nil, class: 'remove_fields glyphicon glyphicon-minus-sign text-danger'
+  def button_to_remove_fields(text='remove', custom_class='btn btn-danger')
+    button_tag text, class: 'remove_fields ' + custom_class, type: 'button'
   end
 
-  def button_to_add_fields(name, f, type, custom_class='')
+  def button_to_add_fields(text, f, type, custom_class='')
     new_object = f.object.send "build_#{type}"
     fields = f.send("#{type}_fields", new_object, child_index: "new_#{type}") do |builder|
       render('ransack_search_form/' + type.to_s + "_fields", f: builder)
     end
-    content_tag :i, name, :class => custom_class + ' add_fields glyphicon glyphicon-plus-sign text-success', :type => 'button', 'data-field-type' => type, 'data-content' => "#{fields}"
+    button_tag text, :class => custom_class + ' add_fields', type: 'button', 'data-field-type' => type, 'data-content' => "#{fields}"
   end
 
   def button_to_nest_fields(name, type)
